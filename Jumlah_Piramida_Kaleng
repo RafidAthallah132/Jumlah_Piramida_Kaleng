@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Jumlah Kaleng Piramida</title>
+
+    <script>
+        $(document).ready(function () {
+        });
+    </script>
+    <style>
+        body {
+            background-color: rgb(167, 198, 255);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid p-5">
+        <div class="text-center">
+            <h2>Jumlah Piramida Kaleng</h2>
+        </div>
+        <div class="text-center">
+            <p>Untuk sebuah tumpukan kaleng yang berbentuk segitiga. Untuk tumpukan setinggi 1 kaleng, Anda membutuhkan
+                1 kaleng. Untuk tumpukan setinggi 2 kaleng, Anda membutuhkan 3 kaleng, dan seterusnya. misal untuk
+                tumpukan kaleng yang memiliki 5 tingkatan maka akan membutuhkan kaleng sebanyak 5+4+3+2+1 = 15 kaleng</p><br>
+            <img src="https://images.fineartamerica.com/images-medium-large-5/red-tin-can-on-top-of-a-pyramid-sami-sarkis.jpg"
+                alt="gambar piramida 5 tingkat dengan 15 kaleng" style="width:250px">
+            <div class="caption">
+                <p>Contoh 15 kaleng yang membentuk piramida 5 tingkatan</p>
+            </div>
+            <br>
+            <br>
+            <p>Masukkan jumlah tingkatan yang diinginkan</p>
+            <input type="number" name="userInput" id="userInput" placeholder="Jumlah Tingkat">
+            <button class="btn btn-primary" onclick="input();" id="Hitung">Hitung</button>
+        </div>
+
+        <div>
+            <h5 class="text-center">Jumlah Kaleng :</h5>
+            <p id="hasil" class="text-center"></p>
+            <div id="pelanggaranAngka" class="form-text text-danger text-center collapse">Tingkat tumpukan tidak bisa
+                nol atau negatif
+            </div>
+        </div>
+    </div>
+    <script>
+        function input() {
+            tingkatTumpukkan = $("#userInput").val();
+            if (tingkatTumpukkan <= 0) {
+                $("#pelanggaranAngka").show();
+                return;
+            } else {
+                $("#pelanggaranAngka").hide();
+            }
+            jumlah = jumlahKaleng(tingkatTumpukkan);
+            $("#hasil").text("Jumlah tumpukan kaleng yang memiliki " + (tingkatTumpukkan) + " tingkat adalah " + (jumlah) + " kaleng");
+        }
+        function jumlahKaleng(tingkatTumpukkan) {
+            if (tingkatTumpukkan == 1)
+                return 1;
+            else return tingkatTumpukkan * 1 + jumlahKaleng(tingkatTumpukkan - 1);
+        }
+    </script>
+
+</body>
+
+</html>
